@@ -39,9 +39,9 @@ export default {
   },
   methods:{
     setUnit: function(){
-        this.Inf = Math.floor(this.all*62/100) + this.all%100;
-        this.Rid = Math.floor(this.all*9/100);
-        this.Hun = Math.floor(this.all*29/100);
+        this.Inf = Math.floor(this.all/100)*62 + this.all%100;
+        this.Rid = Math.floor(this.all/100)*9;
+        this.Hun = Math.floor(this.all/100)*29;
     }
   },
 }
