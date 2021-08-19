@@ -1,18 +1,51 @@
 <template>
   <div id="app">
-    <label>총 병력 수</label>
+    <label>행군 대형 병력 수</label>
     <input type="number" v-model="all">
     <br>
     <label>보병</label>
-    <input type="number" v-model="Inf">
+    <input type="number" v-model="Inf" disabled>
     <br>
     <label>라이더</label>
-    <input type="number" v-model="Rid">
+    <input type="number" v-model="Rid" disabled>
     <br>
     <label>헌터</label>
-    <input type="number" v-model="Hun">
+    <input type="number" v-model="Hun" disabled>
     <br>
     <div>493여러분 사랑해요🖤 -SIR 우진-</div>
+    <br>
+    <div>백투백 랠리 계산용 1번째 랠리기준</div>
+    <div>1번째랠리 행군시간</div>
+    <input type="number" v-model="M1" style="width:80px">
+    <label style="width:40px">분</label>
+    <input type="number" v-model="S1" style="width:80px">
+    <label style="width:40px">초</label>
+    <div>2번째랠리 행군시간</div>
+    <input type="number" v-model="M2" style="width:80px">
+    <label style="width:40px">분</label>
+    <input type="number" v-model="S2" style="width:80px">
+    <label style="width:40px">초</label>
+    <br>
+    <label>출발시간 : </label>
+    <input type="text" v-model="T2" disabled>
+    <div>3번째랠리 행군시간</div>
+    <input type="number" v-model="M3" style="width:80px">
+    <label style="width:40px">분</label>
+    <input type="number" v-model="S3" style="width:80px">
+    <label style="width:40px">초</label>
+    <br>
+    <label>출발시간 : </label>
+    <input type="text" v-model="T3" disabled>
+    <div>4번째랠리 행군시간</div>
+    <input type="number" v-model="M4" style="width:80px">
+    <label style="width:40px">분</label>
+    <input type="number" v-model="S4" style="width:80px">
+    <label style="width:40px">초</label>
+    <br>
+    <label>출발시간 : </label>
+    <input type="text" v-model="T4" disabled>
+    <br>
+
   </div>
 </template>
 
@@ -26,6 +59,18 @@ export default {
         Rid : 0,
         Hun : 0,
         all : 0,
+        M1 : 0,
+        M2 : 0,
+        M3 : 0,
+        M4 : 0,
+        S1 : 0,
+        S2 : 0,
+        S3 : 0,
+        S4 : 0,
+        T1 : 0,
+        T2 : 0,
+        T3 : 0,
+        T4 : 0
     }
   },
   watch:{
@@ -35,13 +80,90 @@ export default {
                 this.setUnit();
             }
         }
+    },
+    'M1': {
+        handler: function(val, oldVal) {
+            if(val != oldVal){
+                this.setTime();
+            }
+        }
+    },
+    'M2': {
+     handler: function(val, oldVal) {
+         if(val != oldVal){
+             this.setTime();
+         }
+     }
+    },
+    'M3': {
+    handler: function(val, oldVal) {
+       if(val != oldVal){
+           this.setTime();
+       }
     }
+    },
+    'M4': {
+     handler: function(val, oldVal) {
+         if(val != oldVal){
+             this.setTime();
+         }
+     }
+    },
+     'S1': {
+         handler: function(val, oldVal) {
+             if(val != oldVal){
+                 this.setTime();
+             }
+         }
+     },
+     'S2': {
+      handler: function(val, oldVal) {
+          if(val != oldVal){
+              this.setTime();
+          }
+      }
+     },
+     'S3': {
+     handler: function(val, oldVal) {
+        if(val != oldVal){
+            this.setTime();
+        }
+     }
+     },
+     'S4': {
+      handler: function(val, oldVal) {
+          if(val != oldVal){
+              this.setTime();
+          }
+      }
+     }
   },
   methods:{
     setUnit: function(){
         this.Inf = Math.floor(this.all/100)*62 + this.all%100;
         this.Rid = Math.floor(this.all/100)*9;
         this.Hun = Math.floor(this.all/100)*29;
+    },
+    setTime: function(){
+        this.T1 = parseInt(this.M1*60)+parseInt(this.S1);
+        console.log(this.T1);
+        var t2 = (300-((parseInt(this.M2)*60 + parseInt(this.S2)) - parseInt(this.T1)));
+        if(parseInt(t2)%60>10)
+            this.T2 = Math.floor(parseInt(t2)/60) + ':' + parseInt(t2)%60;
+        else
+            this.T2 = Math.floor(parseInt(t2)/60) + ':0' + parseInt(t2)%60;
+
+        var t3 = (300-((parseInt(this.M3*60) + parseInt(this.S3)) - parseInt(this.T1)));
+        if(parseInt(t3%60)>10)
+            this.T3 = Math.floor(t3/60) + ':' + t3%60;
+        else
+            this.T3 = Math.floor(t3/60) + ':0' + t3%60;
+
+        var t4 = (300-((parseInt(this.M4*60) + parseInt(this.S4)) - parseInt(this.T1)));
+        if(parseInt(t4%60)>10)
+            this.T4 = Math.floor(t4/60)+ ':' + t4%60;
+        else
+            this.T4 = Math.floor(t4/60)+ ':0' + t4%60;
     }
   },
 }
@@ -61,4 +183,5 @@ div {
     font-size: 20px;
     font-weigh: border;
 }
+
 </style>
