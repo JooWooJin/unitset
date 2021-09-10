@@ -200,7 +200,7 @@ export default {
         this.T1 = parseInt(this.M1*60)+parseInt(this.S1);
         var t2,t3,t4;
         
-        if(M2 != '')
+        if(this.M2 != '')
             t2 = (300-(parseInt(this.T1) - (parseInt(this.M2*60) + parseInt(this.S2))));
         else
             t2 = (300-(parseInt(this.T1) - (parseInt(this.S2))));
@@ -208,7 +208,7 @@ export default {
             this.T2 = Math.floor(parseInt(t2)/60) + ':' + parseInt(t2)%60;
         else
             this.T2 = Math.floor(parseInt(t2)/60) + ':0' + parseInt(t2)%60;
-        if(M3 != '')
+        if(this.M3 != '')
             t3 = (300-(parseInt(this.T1) - (parseInt(this.M3*60) + parseInt(this.S3))));
         else
             t3 = (300-(parseInt(this.T1) - (parseInt(this.S3))));
@@ -218,7 +218,7 @@ export default {
         else
             this.T3 = Math.floor(t3/60) + ':0' + t3%60;
         
-        if(M4 != '')
+        if(this.M4 != '')
             t4 = (300-(parseInt(this.T1) - (parseInt(this.M4*60) + parseInt(this.S4))));
         else
             t4 = (300-(parseInt(this.T1) - (parseInt(this.S4))));
