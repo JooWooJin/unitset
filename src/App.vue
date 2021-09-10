@@ -198,19 +198,31 @@ export default {
     },
     setTime: function(){
         this.T1 = parseInt(this.M1*60)+parseInt(this.S1);
-        var t2 = (300-(parseInt(this.T1) - (parseInt(this.M2)*60 + parseInt(this.S2))));
+        var t2,t3,t4;
+        
+        if(M2 != '')
+            t2 = (300-(parseInt(this.T1) - (parseInt(this.M2*60) + parseInt(this.S2))));
+        else
+            t2 = (300-(parseInt(this.T1) - (parseInt(this.S2))));
         if(parseInt(t2)%60>10)
             this.T2 = Math.floor(parseInt(t2)/60) + ':' + parseInt(t2)%60;
         else
             this.T2 = Math.floor(parseInt(t2)/60) + ':0' + parseInt(t2)%60;
-
-        var t3 = (300-(parseInt(this.T1) - (parseInt(this.M3*60) + parseInt(this.S3))));
+        if(M3 != '')
+            t3 = (300-(parseInt(this.T1) - (parseInt(this.M3*60) + parseInt(this.S3))));
+        else
+            t3 = (300-(parseInt(this.T1) - (parseInt(this.S3))));
+        
         if(parseInt(t3%60)>10)
             this.T3 = Math.floor(t3/60) + ':' + t3%60;
         else
             this.T3 = Math.floor(t3/60) + ':0' + t3%60;
-
-        var t4 = (300-(parseInt(this.T1) - (parseInt(this.M4*60) + parseInt(this.S4))));
+        
+        if(M4 != '')
+            t4 = (300-(parseInt(this.T1) - (parseInt(this.M4*60) + parseInt(this.S4))));
+        else
+            t4 = (300-(parseInt(this.T1) - (parseInt(this.S4))));
+            
         if(parseInt(t4%60)>10)
             this.T4 = Math.floor(t4/60)+ ':' + t4%60;
         else
