@@ -192,9 +192,9 @@ export default {
   },
   methods:{
     setUnit: function(){
-        this.Inf = Math.floor(this.all/100)*62 + this.all%100;
+        this.Inf = Math.floor(this.all/100)*69 + this.all%100;
         this.Rid = Math.floor(this.all/100)*9;
-        this.Hun = Math.floor(this.all/100)*29;
+        this.Hun = Math.floor(this.all/100)*22;
     },
     setTime: function(){
         this.T1 = parseInt(this.M1*60)+parseInt(this.S1);
